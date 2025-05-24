@@ -5,11 +5,13 @@ const productRoutes = require('./routes/productRoutes');
 const cartRoutes = require('./routes/cartRoutes');
 const userRoutes = require('./routes/userRoutes');
 const swaggerDocs = require('./swagger');
+const cors = require('cors');
 
 dotenv.config();
 connectDB();
 const app = express();
 
+app.use(cors()); // 移到这里，在所有路由之前
 app.use(express.json());
 
 app.use('/api/products', productRoutes);
