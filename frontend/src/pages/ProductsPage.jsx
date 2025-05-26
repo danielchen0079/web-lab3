@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { addToCart } from '../utils/cartUtils';
 import { toast } from 'react-hot-toast';
+import ProductCard from '../components/ProductCard';
 
 export default function ProductsPage() {
   const [products, setProducts] = useState([]);
@@ -66,17 +67,10 @@ export default function ProductsPage() {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {products.map((product) => (
-            <div key={product._id} className="card bg-base-100 shadow-md p-4">
-              <h2 className="card-title">{product.name}</h2>
-              <p>{product.description}</p>
-              <p className="font-bold">${product.price}</p>
-              <button
-                className="btn btn-primary mt-2"
-                onClick={() => handleAddToCart(product)}
-              >
-                Add to Cart
-              </button>
-            </div>
+            <ProductCard 
+             key={product._id}
+             product={product}
+             onAddToCart={handleAddToCart}/>
           ))}
         </div>
       )}
