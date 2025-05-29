@@ -3,7 +3,8 @@ const router = express.Router();
 const {getAllProducts, 
     getProductById, 
     getRandomProduct, 
-    searchProduct} = require('../controllers/productController');
+    searchProduct,
+    getAllProductDetails} = require('../controllers/productController');
 
 /**
  * @swagger
@@ -79,5 +80,7 @@ router.get('/random', getRandomProduct);
  *         description: 成功返回搜索结果
  */
 router.get('/search', searchProduct);
+
+router.get('/details/all', getAllProductDetails);
 
 module.exports = router;

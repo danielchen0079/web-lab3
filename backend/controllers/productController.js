@@ -1,4 +1,5 @@
 const Product = require('../models/ProductSchema.js');
+const ProductDetails = require('../models/ProductDetailsSchema.js');
 
 const getAllProducts = async (req, res) => {
   try {
@@ -44,9 +45,19 @@ const searchProduct = async (req, res) => {
     }
 };
 
+const getAllProductDetails = async (req, res) => {
+  try {
+    const details = await ProductDetails.find().populate('productId');
+    res.json(details);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
     getAllProducts,
     getProductById,
     getRandomProduct,
-    searchProduct
+    searchProduct,
+    getAllProductDetails
 };
