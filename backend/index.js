@@ -11,7 +11,7 @@ dotenv.config();
 connectDB();
 const app = express();
 
-app.use(cors()); // 移到这里，在所有路由之前
+app.use(cors()); 
 app.use(express.json());
 
 app.use('/api/products', productRoutes);

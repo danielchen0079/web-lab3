@@ -6,14 +6,15 @@ export default function ProductCard({ product, onAddToCart }) {
             <div className="card bg-base-100 w-96 shadow-sm hover:shadow-lg transition">
                 <figure>
                 <img 
-                        src={product.image} 
-                        alt={product.name} 
-                        className="rounded-xl h-48 w-full object-cover" 
-                        onError={(e) => {
-                            e.target.src = '/images/placeholder.png';
-                            e.target.onError = null;
-                        }}
-                    />
+    src={product.details?.image || product.image} 
+    alt={product.name} 
+    className="rounded-xl h-48 w-full object-cover" 
+    onError={(e) => {
+        e.target.src = '/images/placeholder.png';
+        e.target.onError = null;
+    }}
+/>
+
                 </figure>
                 <div className="card-body">
                     <h2 className="card-title">{product.name}</h2>
